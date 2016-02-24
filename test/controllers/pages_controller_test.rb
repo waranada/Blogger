@@ -3,7 +3,7 @@ require 'test_helper'
 class PagesControllerTest < ActionController::TestCase
   
   def setup
-  	@base_title = "Twttr"
+  	@base_title = "Blogger"
   end
 
   test "should get home" do
