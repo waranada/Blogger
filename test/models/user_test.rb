@@ -49,7 +49,6 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
-
   test "email validation should reject invalid addresses" do
     invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.
                             foo@bar_baz.com foo@bar+baz.com]
@@ -65,8 +64,4 @@ class UserTest < ActiveSupport::TestCase
     @user.save
     assert_not duplicate_user.valid?
   end
-
-
-
-
 end
