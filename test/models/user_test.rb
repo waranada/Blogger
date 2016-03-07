@@ -73,6 +73,21 @@ class UserTest < ActiveSupport::TestCase
     assert_equal mixed_case_email.downcase, @user.reload.email
   end
 
+  test "username should be unique" do
+    duplicate_user = @user.dup
+    duplicate_user.username = @user.username.upcase
+    @user.save
+    assert_not duplicate_user.valid?
+  end
+
+
+  test "user should be saved as lower-case" do 
+    mixed_case_username = "TeStUser"
+    @user.username = mixed_case_username
+    @user.save
+    assert_equal mixed_case_username.downcase, @user.reload.username
+  end
+
   test "password should be present (nonblank)" do
     @user.password = @user.password_confirmation = " " * 7
     assert_not @user.valid?
